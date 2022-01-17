@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/volumes:/usr/share/nginx
+  datascience-notebook:
+    container_name: datascience-notebook-container
+    build:
+      context: .
+      dockerfile: ./datascience-notebook/Dockerfile
+    ports:  
+      - 8081:8888  
+    volumes:  
+      - ./datascience-notebook/volumes:/home/jovyan/work
