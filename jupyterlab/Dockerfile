@@ -26,6 +26,8 @@ import-ipynb \
 && rm -rf ~/.cache/pip
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir -r requirements.txt \
 && rm -rf ~/.cache/pip
+RUN pip install --default-timeout=100 --upgrade --no-cache-dir bash_kernel \
+&& python -m bash_kernel.install
 CMD [" jupyter-lab","--allow-root","--ip=0.0.0.0","--port=8888","--no-browser","--NotebookApp.token=''","--notebook-dir=/workspace"]
 
 
