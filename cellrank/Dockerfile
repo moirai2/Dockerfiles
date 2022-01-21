@@ -7,10 +7,11 @@ RUN apt-get update \
 && apt-get install -y --no-install-recommends \
 libopenmpi-dev \
 && apt -y clean \
-&& rm -rf /var/lib/apt/lists/* \
-&& pip install cython \
-&& pip install mpi4py \
-&& pip install petsc \
-&& pip install slepc \
-&& pip install slepc4py \
+&& rm -rf /var/lib/apt/lists/*
+RUN pip install --default-timeout=100  --upgrade --no-cache-dir \
+cython \
+mpi4py \
+petsc \
+slepc \
+slepc4py \
 && rm -rf /root/.cache/
