@@ -1,7 +1,8 @@
 #https://cellrank.readthedocs.io/
 #https://cellrank.readthedocs.io/en/stable/installation.html#dependencies
-FROM ubuntu
+FROM python:latest
 LABEL maintainer="Akira Hasegawa <akira.hasegawa@riken.jp>"
+ENV TZ JST-9
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
 libopenmpi-dev \
