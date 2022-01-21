@@ -41,3 +41,4 @@ services:
       --no-browser
       --NotebookApp.token=''
       --notebook-dir=/workspace
+      #--collaborative

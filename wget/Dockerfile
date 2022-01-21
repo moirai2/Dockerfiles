@@ -2,12 +2,8 @@ FROM ubuntu
 LABEL maintainer="Akira Hasegawa <akira.hasegawa@riken.jp>"
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
-valgrind \
-git \
-gcc \
-make \
-vim \
-build-essential \
+wget \
+curl \
 ca-certificates \
-&& apt-get -y clean \
+&& apt -y clean \
 && rm -rf /var/lib/apt/lists/*
