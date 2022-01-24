@@ -12,8 +12,6 @@ libopenmpi-dev \
 gfortran \
 libblas-dev \
 liblapack-dev \
-#petsc-dev \
-#slepc-dev \
 && apt -y clean \
 && rm -rf /var/lib/apt/lists/*
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \

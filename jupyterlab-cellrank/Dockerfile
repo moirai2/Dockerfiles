@@ -12,15 +12,15 @@ less \
 && mkdir -p /root/src
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 pip \
-setuptools \
-jupyterlab \
 black \
-jupyterlab_code_formatter \
-jupyterlab-git \
-lckr-jupyterlab-variableinspector \
-jupyterlab_widgets \
-ipywidgets \
 import-ipynb \
+ipywidgets \
+jupyterlab \
+jupyterlab-git \
+jupyterlab_code_formatter \
+jupyterlab_widgets \
+lckr-jupyterlab-variableinspector \
+setuptools \
 && rm -rf ~/.cache/pip
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
@@ -49,8 +49,3 @@ WORKDIR /root/src
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir -r requirements.txt \
 && rm -rf ~/.cache/pip
 CMD [" jupyter-lab","--allow-root","--ip=0.0.0.0","--port=8888","--no-browser","--NotebookApp.token=''","--notebook-dir=/workspace"]
-
-
-
-      
-      
