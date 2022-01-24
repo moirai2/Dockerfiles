@@ -12,7 +12,7 @@ less \
 && mkdir -p /root/src
 COPY requirements.txt /root/src
 WORKDIR /root/src
-RUN pip install --default-timeout=100  --upgrade --no-cache-dir \
+RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 pip \
 setuptools \
 jupyterlab \
