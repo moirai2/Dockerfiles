@@ -26,13 +26,13 @@ services:
     #  - AWS_ACCESS_KEY_ID=AKIXXXXXXXXXXXXXXXXXX
     #  - AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
     build:
-      context: jupyterlab-cellrank
+      context: jupyterlab
       dockerfile: ./Dockerfile
     ports:
       - 8888:8888
     volumes:
-      - ./jupyterlab-cellrank/root:/root/.jupyter
-      - ./jupyterlab-cellrank/workspace:/workspace
+      - ./jupyterlab/root:/root/.jupyter
+      - ./jupyterlab/workspace:/workspace
     entrypoint: >
       jupyter-lab
       --allow-root

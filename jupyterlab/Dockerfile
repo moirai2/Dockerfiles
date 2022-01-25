@@ -10,8 +10,6 @@ less \
 && apt-get clean \
 && rm -rf /usr/local/src/* \
 && mkdir -p /root/src
-COPY requirements.txt /root/src
-WORKDIR /root/src
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 pip \
 black \
@@ -24,8 +22,8 @@ jupyterlab_widgets \
 lckr-jupyterlab-variableinspector \
 setuptools \
 && rm -rf ~/.cache/pip
+COPY requirements.txt /root/src
+WORKDIR /root/src
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir -r requirements.txt \
 && rm -rf ~/.cache/pip
-RUN pip install --default-timeout=100 --upgrade --no-cache-dir bash_kernel \
-&& python -m bash_kernel.install
 CMD [" jupyter-lab","--allow-root","--ip=0.0.0.0","--port=8888","--no-browser","--NotebookApp.token=''","--notebook-dir=/workspace"]
