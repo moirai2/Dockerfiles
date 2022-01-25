@@ -44,16 +44,12 @@ services:
       #--collaborative
   cellrank:
     restart: always
-    container_name: cellrank-container
-    #environment:
-    #  - JUPYTER_ENABLE_LAB=yes
-    #  - AWS_ACCESS_KEY_ID=AKIXXXXXXXXXXXXXXXXXX
-    #  - AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    container_name: jupyterlab-cellrank-container
     build:
       context: jupyterlab-cellrank
       dockerfile: ./Dockerfile
     ports:
-      - 8889:8888
+      - 8889:8889
     volumes:
       - ./jupyterlab-cellrank/root:/root/.jupyter
       - ./jupyterlab-cellrank/workspace:/workspace
@@ -61,7 +57,7 @@ services:
       jupyter-lab
       --allow-root
       --ip=0.0.0.0
-      --port=8888
+      --port=8889
       --no-browser
       --NotebookApp.token=''
       --notebook-dir=/workspace
