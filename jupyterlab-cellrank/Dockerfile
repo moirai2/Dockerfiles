@@ -8,8 +8,7 @@ vim \
 less \
 && apt-get autoremove -y \
 && apt-get clean \
-&& rm -rf /usr/local/src/* \
-&& mkdir -p /root/src
+&& rm -rf /usr/local/src/*
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 pip \
 black \
@@ -44,8 +43,8 @@ RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 slepc \
 slepc4py \
 && rm -rf /root/.cache/
-COPY requirements.txt /root/src
-WORKDIR /root/src
+COPY requirements.txt /root
+WORKDIR /root
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir -r requirements.txt \
 && rm -rf ~/.cache/pip
 CMD [" jupyter-lab","--allow-root","--ip=0.0.0.0","--port=8888","--no-browser","--NotebookApp.token=''","--notebook-dir=/workspace"]
