@@ -31,7 +31,7 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./jupyterlab/root:/root/.jupyter
+      - ./jupyterlab/root:/root
       - ./jupyterlab/workspace:/workspace
     entrypoint: >
       jupyter-lab

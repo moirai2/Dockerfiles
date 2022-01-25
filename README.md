@@ -46,3 +46,7 @@ docker-compose up -d
 ```
 docker-compose down
 ```
+* Remove orphans
+```
+docker-compose down --rmi all --volumes --remove-orphans
+```
