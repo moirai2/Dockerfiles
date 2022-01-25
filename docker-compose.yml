@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./nginx/Dockerfile
     ports:
-      - "8080:80"
+      - 8080:80
     volumes:
       - ./nginx/volumes:/usr/share/nginx
   #datascience-notebook:
@@ -42,3 +42,26 @@ services:
       --NotebookApp.token=''
       --notebook-dir=/workspace
       #--collaborative
+  cellrank:
+    restart: always
+    container_name: cellrank-container
+    #environment:
+    #  - JUPYTER_ENABLE_LAB=yes
+    #  - AWS_ACCESS_KEY_ID=AKIXXXXXXXXXXXXXXXXXX
+    #  - AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    build:
+      context: jupyterlab-cellrank
+      dockerfile: ./Dockerfile
+    ports:
+      - 8889:8888
+    volumes:
+      - ./jupyterlab/root:/root/.jupyter
+      - ./jupyterlab/workspace:/workspace
+    entrypoint: >
+      jupyter-lab
+      --allow-root
+      --ip=0.0.0.0
+      --port=8888
+      --no-browser
+      --NotebookApp.token=''
+      --notebook-dir=/workspace
