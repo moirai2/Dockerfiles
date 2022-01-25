@@ -46,5 +46,6 @@ slepc4py \
 COPY requirements.txt /root
 WORKDIR /root
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir -r requirements.txt \
+&& rm requirements.txt \
 && rm -rf ~/.cache/pip
 CMD [" jupyter-lab","--allow-root","--ip=0.0.0.0","--port=8888","--no-browser","--NotebookApp.token=''","--notebook-dir=/workspace"]
