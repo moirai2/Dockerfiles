@@ -48,7 +48,7 @@ services:
       context: jupyterlab-cellrank
       dockerfile: ./Dockerfile
     ports:
-      - 8888:8888
+      - 8889:8888
     volumes:
       - ./jupyterlab-cellrank/root:/root/.jupyter
       - ./jupyterlab-cellrank/workspace:/workspace
