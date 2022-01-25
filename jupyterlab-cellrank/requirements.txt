@@ -1,6 +1,8 @@
 Pillow
+anndata
 bash_kernel
 beautifulsoup4
+cellrank
 devtools
 graphviz
 lightgbm
@@ -14,8 +16,10 @@ plotly
 pycaret
 pydeps
 requests
+scanpy
 scikit-learn
 scipy
+scvelo
 seaborn
 shap
 umap
