@@ -55,8 +55,8 @@ services:
     ports:
       - 8889:8888
     volumes:
-      - ./jupyterlab/root:/root/.jupyter
-      - ./jupyterlab/workspace:/workspace
+      - ./jupyterlab-cellrank/root:/root/.jupyter
+      - ./jupyterlab-cellrank/workspace:/workspace
     entrypoint: >
       jupyter-lab
       --allow-root

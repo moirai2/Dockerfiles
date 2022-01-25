@@ -9,7 +9,7 @@ docker build -t NAME .
   * username: moirai2
   * moirai2/skewc: https://hub.docker.com/repository/docker/moirai2/skewc
 
-## binaries
+## command lines
 * Creates a Docker image
 ```
 cd Dockerfiles
@@ -24,4 +24,25 @@ buildDockerImageTar.sh IMGNAME
 ```
 cd Dockerfiles
 buildSingularityImageFile.sh IMGNAME
+```
+* To download GitHub
+```
+git pull https://github.com/moirai2/Dockerfiles.git
+```
+* To update GitHub
+```
+cd Dockerfiles
+git pull
+```
+* To start docker-compose
+```
+docker-compose build
+```
+* To start web services
+```
+docker-compose up -d
+```
+* To stop web services
+```
+docker-compose down
 ```
