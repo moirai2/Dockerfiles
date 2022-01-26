@@ -1,0 +1,8 @@
+anndata
+cellrank
+matplotlib
+numpy
+pandas
+scanpy
+scvelo
+seaborn

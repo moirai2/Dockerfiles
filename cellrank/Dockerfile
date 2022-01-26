@@ -27,3 +27,9 @@ RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 slepc \
 slepc4py \
 && rm -rf /root/.cache/
+COPY requirements.txt /root
+WORKDIR /root
+RUN pip install --default-timeout=100 --upgrade --no-cache-dir -r requirements.txt \
+&& rm requirements.txt \
+&& rm -rf ~/.cache/pip
+

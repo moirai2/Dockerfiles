@@ -11,15 +11,7 @@ less \
 && rm -rf /usr/local/src/*
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 pip \
-black \
-import-ipynb \
-ipywidgets \
 jupyterlab \
-jupyterlab-git \
-jupyterlab_code_formatter \
-jupyterlab_widgets \
-lckr-jupyterlab-variableinspector \
-setuptools \
 && rm -rf ~/.cache/pip
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \

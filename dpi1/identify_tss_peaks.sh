@@ -162,7 +162,7 @@ case ${decomposition} in
     ### 06 ###
     for X in $(rake --dry-run decompose_smoothing 2>&1 | grep Execute | cut -f 5 -d ' ' | grep  '.bed$' )
     do
-      qsub.pl -cwd -o ${dpi_out_path}/log/ -e ${dpi_out_path}/log/ -v ${qsub_v} -N xqsub$$_06_dpi_each -hold_jid xqsub$$_05_tc_long -v RAKE_TARGET=$X ./scripts/qsub.sh
+      qsub.pl -cwd -o ${dpi_out_path}/log/ -e ${dpi_out_path}/log/ -v ${qsub_v} -N xqsub$$_06_dpi_each -hold_jid xqsub$$_05_tc_long -v RAKE_TARGET=$X ./scripts/qsub.sh &
     done
 
     ### 07 - 09 ###
