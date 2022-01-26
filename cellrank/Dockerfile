@@ -3,7 +3,7 @@
 #https://www.mcs.anl.gov/petsc/petsc4py-current/docs/usrman/install.html
 #https://itneko.blogspot.com/2019/08/ubuntugfortran.html
 #https://askubuntu.com/questions/623578/installing-blas-and-lapack-packages
-FROM python:latest
+FROM python:3.9-bullseye
 LABEL maintainer="Akira Hasegawa <akira.hasegawa@riken.jp>"
 ENV TZ JST-9
 RUN apt-get update \
