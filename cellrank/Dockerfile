@@ -21,8 +21,10 @@ mpi4py \
 petsc \
 petsc4py
 RUN mkdir -p /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/ \
-&& ln -s /usr/local/lib/python3.10/site-packages/petsc/include/ /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/include \
-&& ln -s /usr/local/lib/python3.10/site-packages/petsc/lib/ /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/lib
+#&& ln -s /usr/local/lib/python3.10/site-packages/petsc/include /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/include \
+&& ln -s usr/local/lib/python3.9/site-packages/petsc/include /usr/local/lib/python3.9/site-packages/petsc/installed-arch-linux2-c-opt/include \
+#&& ln -s /usr/local/lib/python3.10/site-packages/petsc/lib /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/lib
+&& ln -s /usr/local/lib/python3.9/site-packages/petsc/lib /usr/local/lib/python3.9/site-packages/petsc/installed-arch-linux2-c-opt/lib
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
 slepc \
 slepc4py \
