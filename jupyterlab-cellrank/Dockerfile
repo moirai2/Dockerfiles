@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.9-bullseye
 USER root
 LABEL maintainer="Akira Hasegawa <akira.hasegawa@riken.jp>"
 ENV TZ JST-9
