@@ -1,5 +1,6 @@
-cellrank
+cellrank>=1.5.1
 docrep>=0.3.0
+ipywidgets
 joblib>=0.13.1
 matplotlib>=3.3.0
 networkx>=2.2
@@ -14,5 +15,9 @@ scipy>=1.2.0
 scvelo>=0.2.4
 seaborn>=0.10.0
 setuptools>=41.0.1
-typing_extensions
+tqdm>=4.62.3
+typing_extensions>=4.0.1
 wrapt>=1.12.1
+git+https://github.com/theislab/scachepy
+python-igraph 
+louvain

@@ -1,23 +1,23 @@
 version: '3'
 services:
-  nginx:
-    container_name: nginx-container
+  moirai2:
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+      context: moirai2
+      dockerfile: ./Dockerfile
     ports:
       - 8080:80
     volumes:
-      - ./nginx/volumes:/usr/share/nginx
-  #datascience-notebook:
-  #  container_name: datascience-notebook-container
+      - ./moirai2/html:/var/www/html
+    restart: always
+  #nginx:
+  #  container_name: nginx-container
   #  build:
   #    context: .
-  #    dockerfile: ./datascience-notebook/Dockerfile
+  #    dockerfile: ./nginx/Dockerfile
   #  ports:
-  #    - 8081:8888  
+  #    - 8080:80
   #  volumes:
-  #    - ./datascience-notebook/volumes:/home/jovyan/work
+  #    - ./nginx/volumes:/usr/share/nginx
   jupyterlab:
     restart: always
     container_name: jupyterlab-container
