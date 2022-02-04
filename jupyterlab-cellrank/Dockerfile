@@ -32,8 +32,8 @@ RUN mkdir -p /usr/local/lib/python3.7/site-packages/petsc/installed-arch-linux2-
 && ln -s /usr/local/lib/python3.7/site-packages/petsc/include /usr/local/lib/python3.7/site-packages/petsc/installed-arch-linux2-c-opt/include \
 && ln -s /usr/local/lib/python3.7/site-packages/petsc/lib /usr/local/lib/python3.7/site-packages/petsc/installed-arch-linux2-c-opt/lib
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
-slepc==1.16.1 \
-slepc4py==1.16.1 \
+slepc==3.16.1 \
+slepc4py==3.16.1 \
 && rm -rf /root/.cache/
 COPY requirements.txt /root
 WORKDIR /root
