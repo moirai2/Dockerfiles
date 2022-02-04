@@ -9,7 +9,7 @@ numpy>=1.17.0
 pandas>=1.2.0
 pygam>=0.8.0
 pygpcca>=1.0.3
-scanpy>=1.7.2
+scanpy==1.7.2
 scikit-learn>=0.24.0
 scipy>=1.2.0
 scvelo>=0.2.4
@@ -21,3 +21,5 @@ wrapt>=1.12.1
 git+https://github.com/theislab/scachepy
 python-igraph 
 louvain
+velocyto
+pysam

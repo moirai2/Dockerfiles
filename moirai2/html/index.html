@@ -6,78 +6,12 @@
 <script src="js/jquery/jquery.columns.min.js"></script>
 <script src="js/jquery/jquery.cookie.js"></script>
 <script src="js/ah3q/tab.js"></script>
-<script>
-var moirai=new moirai2("baseseq");
-$(document).ready(function(){
-  moirai.rdfQuery("$id->fastq->$fastq,$id->image->$image",function(json){$('#result').columns({
-    data:json,
-    size:25,
-    schema: [
-      {"header": "fastq", "key": "fastq", "template": '<a href="{{fastq}}">{{fastq}}</a>'},
-      {"header": "image", "key": "image", "template": '<a href="{{image}}"><img width=300 height=200 src=\"{{image}}\"></a>'}
-    ]});});
-  moirai.checkProgress(function(json){$('#progress').columns({
-    data:json,
-    size:10,
-    schema: [
-      {"header": "wrkid", "key": "wrkid", "template": '<a href="{{logfile}}">{{wrkid}}</a>'},
-      {"header": "status", "key": "execute"},
-      {"header": "time", "key": "time"},
-      {"header": "logfile", "key": "logfile"}
-    ]});});
-});
-function submitJob(){
-    moirai.submitJob({
-      "fastq":$("#fastq").val()
-    });
-}
-</script>
-<link rel="stylesheet" href="css/classic.css">
-<link rel="stylesheet" href="css/tab.css">
 </head>
 <body>
-<h1>Graph Base Sequence</h1>
-<hr>
-
-<div class="tab-area">
-<div class="tab">Result</div><div class="tab">Submit</div><div class="tab">Progress</div><div class="tab">About</div>
-</div>
-
-<div class="content">
-<div id="result"></div>
-</div>
-
-<div class="content">
-<form>
+<h1>Moirai2</h1>
 <ul>
-<li>fastq: <input id="fastq" type="text" size=50 value="sample/baseseq/CAGE.fq"></li>
+<li><a href="bam2ctss.html">bam2ctss</a></li>
+<li><a href="runinfo.html">runinfo</a></li>
 </ul>
-<input type="button" onClick="submitJob()" value="Submit"/></input>
-</form>
-</div>
-
-<div class="content">
-  <div id="progress"></div>
-</div>
-
-<div class="content">
-<ul>
-  <li>Author: Akira Hasegawa</li>
-  <li>Update: 2021/07/07</li>
-  <li>automate bash file: <a href="baseseq/automate/bash.sh">bash.sh</a></li>
-  <li>json file: <a href="command/sequence/baseSeqGraph.json">baseSeqGraph.json</a></li>
-  <li>This page was created to test Moirai2 web interface.</li>
-  <li>This creates a simple base distribution image of fastq file.<br><br>
-  <a href="images/baseseq.png"><img width=300 src="images/baseseq.png"></a></li>
-  <ul>
-    <li><font color='green'>green: A</font></li>
-    <li><font color='blue'>blue: C</font></li>
-    <li><font color='yellow'>yellow: G</font></li>
-    <li><font color='red'>red: T</font></li>
-    <li><font color='black'>black: N</font></li>
-  </ul>
-</ul>
-</div>
-
 </body>
 </html>

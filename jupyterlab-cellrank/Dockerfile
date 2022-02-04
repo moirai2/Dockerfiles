@@ -22,21 +22,18 @@ liblapack-dev \
 && apt -y clean \
 && rm -rf /var/lib/apt/lists/*
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
-cython \
-numpy \
-mpi4py \
-petsc \
-petsc4py \
+cython=0.29.27 \
+numpy=1.21.5 \
+mpi4py=3.1.3 \
+petsc=3.16.1 \
+petsc4py=3.16.1 \
 && rm -rf /root/.cache/
-#RUN mkdir -p /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/ \
 RUN mkdir -p /usr/local/lib/python3.7/site-packages/petsc/installed-arch-linux2-c-opt/ \
-#&& ln -s /usr/local/lib/python3.10/site-packages/petsc/include /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/include \
 && ln -s /usr/local/lib/python3.7/site-packages/petsc/include /usr/local/lib/python3.7/site-packages/petsc/installed-arch-linux2-c-opt/include \
-#&& ln -s /usr/local/lib/python3.10/site-packages/petsc/lib /usr/local/lib/python3.10/site-packages/petsc/installed-arch-linux2-c-opt/lib
 && ln -s /usr/local/lib/python3.7/site-packages/petsc/lib /usr/local/lib/python3.7/site-packages/petsc/installed-arch-linux2-c-opt/lib
 RUN pip install --default-timeout=100 --upgrade --no-cache-dir \
-slepc \
-slepc4py \
+slepc=1.16.1 \
+slepc4py=1.16.1 \
 && rm -rf /root/.cache/
 COPY requirements.txt /root
 WORKDIR /root

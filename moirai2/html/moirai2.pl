@@ -463,12 +463,12 @@ $urls->{"daemon/execute"}="https://moirai2.github.io/schema/daemon/execute";
 $urls->{"daemon/error/file/empty"}="https://moirai2.github.io/schema/daemon/error/file/empty";
 $urls->{"daemon/error/stderr/ignore"}="https://moirai2.github.io/schema/daemon/error/stderr/ignore";
 $urls->{"daemon/error/stdout/ignore"}="https://moirai2.github.io/schema/daemon/error/stdout/ignore";
-$urls->{"daemon/file/md5"}="https://moirai2.github.io/schema/daemon/file/md5";
-$urls->{"daemon/file/filesize"}="https://moirai2.github.io/schema/daemon/file/filesize";
-$urls->{"daemon/file/linecount"}="https://moirai2.github.io/schema/daemon/file/linecount";
-$urls->{"daemon/file/seqcount"}="https://moirai2.github.io/schema/daemon/file/seqcount";
-$urls->{"daemon/file/stats"}="https://moirai2.github.io/schema/daemon/file/stats";
-$urls->{"daemon/filestats"}="https://moirai2.github.io/schema/daemon/filestats";
+#$urls->{"daemon/file/md5"}="https://moirai2.github.io/schema/daemon/file/md5";
+#$urls->{"daemon/file/filesize"}="https://moirai2.github.io/schema/daemon/file/filesize";
+#$urls->{"daemon/file/linecount"}="https://moirai2.github.io/schema/daemon/file/linecount";
+#$urls->{"daemon/file/seqcount"}="https://moirai2.github.io/schema/daemon/file/seqcount";
+#$urls->{"daemon/file/stats"}="https://moirai2.github.io/schema/daemon/file/stats";
+#$urls->{"daemon/filestats"}="https://moirai2.github.io/schema/daemon/filestats";
 $urls->{"daemon/input"}="https://moirai2.github.io/schema/daemon/input";
 $urls->{"daemon/inputs"}="https://moirai2.github.io/schema/daemon/inputs";
 $urls->{"daemon/maxjob"}="https://moirai2.github.io/schema/daemon/maxjob";
@@ -524,8 +524,7 @@ my $bindir="$moiraidir/bin";
 my $dbdir="$moiraidir/db";
 my $logdir="$moiraidir/log";
 my $cmddir="$moiraidir/cmd";
-my $singularitydir="$moiraidir/singularity";
-my $dockerdir="$moiraidir/docker";
+my $singularitydir="singularity";
 my $ctrldir="$moiraidir/ctrl";
 my $checkdir="$logdir/check";
 my $errordir="$logdir/error";
@@ -554,7 +553,6 @@ mkdir($processdir);chmod(0777,$processdir);
 mkdir($jobdir);chmod(0777,$jobdir);
 mkdir($insertdir);chmod(0777,$insertdir);
 mkdir($submitdir);chmod(0777,$submitdir);
-mkdir($dockerdir);chmod(0777,$dockerdir);
 mkdir($singularitydir);chmod(0777,$singularitydir);
 if($ARGV[0] eq "check"){shift(@ARGV);check(@ARGV);exit(0);}
 if($ARGV[0] eq "ls"){shift(@ARGV);ls(@ARGV);exit(0);}
@@ -1332,7 +1330,6 @@ sub commandProcess{
 	if(defined($opt_q)){$commands->{$cmdurl}->{$urls->{"daemon/qjob"}}=$opt_q;}
 	if(defined($opt_Q)){$commands->{$cmdurl}->{$urls->{"daemon/qjob/opt"}}=$opt_Q;}
 	if(defined($opt_r)){$commands->{$cmdurl}->{$urls->{"daemon/return"}}=removeDollar($opt_r);}
-	if(defined($opt_f)){$commands->{$cmdurl}->{$urls->{"daemon/filestats"}}=handleKeys($opt_f);}
 	if(defined($opt_E)){$commands->{$cmdurl}->{$urls->{"daemon/error/stderror/ignore"}}=handleKeys($opt_E);}
 	if(defined($opt_O)){$commands->{$cmdurl}->{$urls->{"daemon/error/stdout/ignore"}}=handleKeys($opt_O);}
 	foreach my $input(@inputs){
