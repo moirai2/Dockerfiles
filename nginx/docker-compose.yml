@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx-container
+    build:
+      context: $dir
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - $dir/volumes:/usr/share/nginx

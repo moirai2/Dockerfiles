@@ -285,6 +285,7 @@ FileList["#{out_path}/outPooled/tc.long/a*"].each do |infile|
                   noise_subtraction_ratio = #{noise_subtraction_ratio} )' \
         | R --slave \
         > #{t.name} !
+    sh %! rm -rf #{tmpdir} !
   end
   task :decompose_smoothing => outfile
   subcluster[:decompose_smoothing] << outfile

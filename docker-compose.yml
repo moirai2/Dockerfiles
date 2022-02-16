@@ -5,7 +5,7 @@ services:
       context: moirai2
       dockerfile: ./Dockerfile
     ports:
-      - 8080:80
+      - "8080:80"
     volumes:
       - ./moirai2/html:/var/www/html
     restart: always
@@ -15,9 +15,17 @@ services:
   #    context: .
   #    dockerfile: ./nginx/Dockerfile
   #  ports:
-  #    - 8080:80
+  #    - "8080:80"
   #  volumes:
   #    - ./nginx/volumes:/usr/share/nginx
+  web:
+    build:
+      context: flask-redis
+      dockerfile: ./Dockerfile
+    ports:
+     - "5000:5000"
+  redis:
+    image: "redis:alpine"
   jupyterlab:
     restart: always
     container_name: jupyterlab-container
@@ -29,7 +37,7 @@ services:
       context: jupyterlab
       dockerfile: ./Dockerfile
     ports:
-      - 8888:8888
+      - "8888:8888"
     volumes:
       - ./jupyterlab/root:/root/.jupyter
       - ./jupyterlab/workspace:/workspace
@@ -48,7 +56,7 @@ services:
       context: jupyterlab-cellrank
       dockerfile: ./Dockerfile
     ports:
-      - 8889:8888
+      - "8889:8888"
     volumes:
       - ./jupyterlab-cellrank/root:/root/.jupyter
       - ./jupyterlab-cellrank/workspace:/workspace
