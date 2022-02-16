@@ -5,11 +5,10 @@ FROM php:5.4-apache
 COPY ./config/php.ini /usr/local/etc/php/
 COPY ./config/apache2.conf /etc/apache2/
 COPY ./config/sites/*.conf /etc/apache2/sites-available/
-ADD html /var/www/html
-WORKDIR /var/www/html
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
 libpq-dev \
 libwww-perl \
 perl \
-build-essential
+build-essential \
+&& docker-php-ext-install pdo_mysql pdo_pgsql mysqli mbstring

@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Retrieve runinfo</title>
+<script src="js/ah3q/moirai2.js"></script>
+<script src="js/jquery/jquery-3.4.1.min.js"></script>
+<script src="js/jquery/jquery.columns.min.js"></script>
+<script src="js/jquery/jquery.cookie.js"></script>
+<script src="js/ah3q/tab.js"></script>
+<script>
+var moirai=new moirai2("runinfo");
+$(document).ready(function() {
+moirai.rdfQuery("$accessionid->runinfo->$runinfo,$accessionid->summary->$summary",function(json){$('#result').columns({
+data:json,
+size:25,
+schema: [
+{"header": "accessionid", "key": "accessionid"},
+{"header": "runinfo", "key": "runinfo", "template": '<a href="{{runinfo}}">{{runinfo}}</a>'},
+{"header": "summary", "key": "summary", "template": '<a href="{{summary}}">{{summary}}</a>'}
+]
+});});
+progress();
+});
+function progress(){
+moirai.checkProgress(function(json){$('#progress').columns({
+data:json,
+size:10,
+schema: [
+{"header": "status", "key": "execute"},
+{"header": "time", "key": "time"},
+{"header": "logfile", "key": "logfile","template": '<a href="{{logfile}}">{{logfile}}</a>'},
+]
+});});
+}
+function submitJob(){
+moirai.submitJob({
+"bam":$("#bamFile").val(),
+"cutoff":$("#cutoff").val(),
+"flag":$("#flag").val()
+});
+$('#progress').columns('destroy');
+progress();
+}
+</script>
+<link rel="stylesheet" href="css/classic.css">
+<link rel="stylesheet" href="css/tab.css">
+</head>
+<body>
+<h1>Convert BAM to CTSS</h1>
+<hr>
+<div class="tab-area">
+<div class="tab">Result</div><div class="tab">Submit</div><div class="tab">About</div>
+</div>
+<div class="content"><div id="result"></div></div>
+<div class="content"><form>
+<ul>
+<li>accessionid: <input id="accessionid" type="text" size=50 value="sample/bam2ctss/input.bam"> - Accession ID get runinfo and summary files.</li>
+</ul>
+<input type="button" onClick="submitJob()" value="Submit"/></input>
+</form>
+<hr>
+<div id="progress"></div>
+</div>
+<div class="content">
+<ul>
+  <li>Author: Akira Hasegawa</li>
+  <li>Update: 2022/02/02</li>
+  <li>automate bash file: <a href="runinfo/automate/bash.sh">bash.sh</a></li>
+  <li>This page was created to test Moirai2 web interface.</li>
+</ul>
+</div>
+</body>
+</html>

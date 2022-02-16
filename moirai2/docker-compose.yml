@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build:
+      context: $moirai2Dir
+      dockerfile: ./Dockerfile
+    ports:
+     - "8080:80"
+    volumes:
+     - ./$moirai2Dir/html:/var/www/html

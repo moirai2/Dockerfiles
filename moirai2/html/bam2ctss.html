@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Convert BAM to CTSS</title>
+<script src="js/ah3q/moirai2.js"></script>
+<script src="js/jquery/jquery-3.4.1.min.js"></script>
+<script src="js/jquery/jquery.columns.min.js"></script>
+<script src="js/jquery/jquery.cookie.js"></script>
+<script src="js/ah3q/tab.js"></script>
+<script>
+var moirai=new moirai2("bam2ctss");
+$(document).ready(function() {
+moirai.rdfQuery("$id->bam->$bam,$id->ctssbed->$ctssbed,$id->flag->$flag,$id->cutoff->$cutoff",function(json){$('#result').columns({
+data:json,
+size:25,
+schema: [
+{"header": "bam", "key": "bam", "template": '<a href="{{bam}}">{{bam}}</a>'},
+{"header": "cutoff", "key": "cutoff"},
+{"header": "flag", "key": "flag"},
+{"header": "ctssbed", "key": "ctssbed", "template": '<a href="{{ctssbed}}">{{ctssbed}}</a>'}
+]
+});});
+progress();
+});
+function progress(){
+moirai.checkProgress(function(json){$('#progress').columns({
+data:json,
+size:10,
+schema: [
+{"header": "status", "key": "execute"},
+{"header": "time", "key": "time"},
+{"header": "logfile", "key": "logfile","template": '<a href="{{logfile}}">{{logfile}}</a>'},
+]
+});});
+}
+function submitJob(){
+moirai.submitJob({
+"bam":$("#bamFile").val(),
+"cutoff":$("#cutoff").val(),
+"flag":$("#flag").val()
+});
+$('#progress').columns('destroy');
+progress();
+}
+</script>
+<link rel="stylesheet" href="css/classic.css">
+<link rel="stylesheet" href="css/tab.css">
+</head>
+<body>
+<h1>Convert BAM to CTSS</h1>
+<hr>
+<div class="tab-area">
+<div class="tab">Result</div><div class="tab">Submit</div><div class="tab">About</div>
+</div>
+<div class="content"><div id="result"></div></div>
+<div class="content"><form>
+<ul>
+<li>bam: <input id="bamFile" type="text" size=50 value="sample/bam2ctss/input.bam"> - BAM file to be converted.</li>
+<li>flag: <input id="flag" type="text" size=10 value="0x104"> - flag for samtools view.Default is remove secondary alignment and unmapped.</li>
+<li>cutoff: <input id="cutoff" type="text" size=10 value="10"> - QV (0~40) for removing low quality alignments when running samtools view</li>
+</ul>
+<input type="button" onClick="submitJob()" value="Submit"/></input>
+</form>
+<hr>
+<div id="progress"></div>
+</div>
+<div class="content">
+<ul>
+  <li>Author: Akira Hasegawa</li>
+  <li>Update: 2021/07/24</li>
+  <li>automate bash file: <a href="bam2ctss/automate/bash.sh">bash.sh</a></li>
+  <li>json file to convert bam to ctss: <a href="command/bam/bam2ctss.json">bam2ctss.json</a></li>
+  <li>This is a simple script to convert <a href="https://samtools.github.io/hts-specs/SAMv1.pdf">BAM</a> file to <a href="https://fantom.gsc.riken.jp/5/datahub/mm9/TSS_peaks_and_counts.html">CTSS (CAGE tag starting sites)</a> BED format.</li>
+  <li>This page was created to test Moirai2 web interface.</li>
+</ul>
+</div>
+</body>
+</html>
