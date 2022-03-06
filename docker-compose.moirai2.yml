@@ -2,9 +2,9 @@ version: '3'
 services:
   web:
     build:
-      context: $moirai2Dir
+      context: moirai2
       dockerfile: ./Dockerfile
     ports:
      - "8080:80"
     volumes:
-     - ./$moirai2Dir/html:/var/www/html
+     - ./moirai2/html:/var/www/html

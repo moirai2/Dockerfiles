@@ -68,3 +68,13 @@ services:
       --no-browser
       --NotebookApp.token=''
       --notebook-dir=/workspace
+  rstudio:
+    image: rocker/tidyverse:latest
+    ports:
+      - "8890:8787"
+    environment:
+      - USERNAME=rstudio
+      - PASSWORD=rstudio
+      - DISABLE_AUTH=true
+    volumes:
+      - ./rstudio/project:/home/rstudio/project

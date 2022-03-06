@@ -1,7 +1,9 @@
 version: '3'
 services:
   web:
-    build: $flaskredisdir
+    build:
+      context: flask-redis
+      dockerfile: ./Dockerfile
     ports:
      - "5000:5000"
     volumes:
